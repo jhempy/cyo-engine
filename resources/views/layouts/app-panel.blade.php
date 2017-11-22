@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -36,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="navbar-item"><a href="{{ url('/home') }}">Home</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,12 +74,31 @@
                 </div>
             </div>
         </nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
         
-@yield('content')
+                    @yield('content')
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
+  <dl>
+
+    <dt><a href="/adventures/create">Create a new adventure</a></dt>
+    <dd></dd>
+
+    <dt><a href="/adventures">List all adventures</a></dt>
+    <dd></dd>
+
+  </dl>
+
                 </div>
             </div>
         </div>

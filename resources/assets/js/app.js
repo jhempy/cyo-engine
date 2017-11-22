@@ -16,7 +16,18 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('decisions', require('./components/Decisions.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    methods: {
+
+      deleteAdventure: function(id) {
+        var form = document.getElementById('deleteAdventureForm');
+        form.action = "/adventures/" + id;
+        form.submit();
+      }
+
+    }
 });

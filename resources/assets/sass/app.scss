@@ -7,3 +7,57 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// For Vue
+[v-cloak] {
+  display: none;
+}
+
+.list-indented {
+  margin-left: 20px;
+}
+
+ul.list-indented li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.option-spacing {
+  padding: 0px 5px;
+}
+
+.headline {
+  color: $lime;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+a {
+  color: $lime;
+}
+
+.create-icon {
+  padding-top: 6px;
+}
+
+.page-icon {
+  color: $lime;
+  width: 20px;
+}
+
+.create-icon-small {
+  padding-left: 5px;
+}
+
+.small-side-link {
+  padding-left: 5px;
+  font-size: .8em;
+}
+
+.panel-decisions {
+  background-color: lighten($lightlime, 10%);
+}
+
+.light-background {
+  background-color: #ffffff !important;
+}

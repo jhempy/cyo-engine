@@ -1,6 +1,16 @@
+// Palette Colors
+$watermelon: #FF3B3F;
+$carbon: #A9A9A9;
+$sky: #CAEBAF2;
+$neutral: #EFEFEF;
+
+// New Palette Colors
+// $lime: #75D701;
+$lime: #3ac569;
+$lightlime: #cff0da;
 
 // Body
-$body-bg: #f5f8fa;
+$body-bg: $neutral;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -10,7 +20,8 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #3097D1;
+// $brand-primary: #3097D1;
+$brand-primary: $lime;
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
