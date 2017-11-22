@@ -11,6 +11,9 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
@@ -82,11 +85,19 @@
                     Flowing Fables
                 </div>
 
-                <div class="subtitle">
+                <div class="subtitle m-b-md">
                     A choose-your-own engine for short stories and petite plots.
+                </div>
+
+                <div id="app">
+                    <read-list :adventures='{!! json_encode($adventures) !!}'></read-list>
                 </div>
 
             </div>
         </div>
+
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+
     </body>
 </html>

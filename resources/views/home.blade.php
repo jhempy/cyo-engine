@@ -14,15 +14,11 @@
                         </div>
                     @endif
 
-  <dl>
+                    <p><strong><a href="/adventures/create">Create a new adventure</a></strong></p>
 
-    <dt><a href="/adventures/create">Create a new adventure</a></dt>
-    <dd></dd>
+                    <p><strong><a href="/adventures">List my adventures</a></strong></p>
 
-    <dt><a href="/adventures">List all adventures</a></dt>
-    <dd></dd>
-
-  </dl>
+                    <p><strong><a href="/read">Read published adventures</a></strong></p>
 
                 </div>
             </div>

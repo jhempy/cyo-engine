@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $adventures = \App\Adventure::where('publish_date', '!=', null)->get();
+    return view('welcome', compact('adventures'));
 });
 
 Auth::routes();
