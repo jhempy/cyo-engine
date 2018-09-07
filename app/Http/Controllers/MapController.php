@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ReadController extends Controller
+class MapController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class ReadController extends Controller
      */
     public function index()
     {
-        $adventures = \App\Adventure::where('publish_date', '!=', null)->get();
-        return view('read.index', compact('adventures'));
+        //
     }
 
     /**
@@ -47,8 +46,7 @@ class ReadController extends Controller
     public function show($id)
     {
         $adventure = \App\Adventure::find($id);
-        $page = \App\Page::find($adventure->first_page_id);
-        return view('adventure.show', compact('adventure', 'page'));
+        return view('map.show', compact('adventure'));
     }
 
     /**

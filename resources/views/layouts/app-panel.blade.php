@@ -33,14 +33,14 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                      <span class="ff-home">{{ config('app.name', 'Laravel') }}</span>
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="navbar-item"><a href="{{ url('/home') }}">Home</a></li>
+                        <li class="navbar-item"><a href="{{ url('/home') }}">My Adventures</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -86,7 +86,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-        
+
                     @yield('content')
 
                 </div>

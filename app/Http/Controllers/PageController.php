@@ -34,8 +34,8 @@ class PageController extends Controller
     public function create()
     {
         $adventure = \App\Adventure::find(session('adventure_id'));
-        $decisions = [];
-        return view('page.create', compact('adventure', 'decisions'));
+        $pages = $adventure->pages()->orderBy('name')->get();
+        return view('page.create', compact('adventure', 'pages'));
     }
 
     /**
@@ -53,6 +53,7 @@ class PageController extends Controller
         $page = new \App\Page;
         $page->name = $request->input('pageName');
         $page->page_text = $request->input('pageText');
+        $page->decision_prompt = $request->input('decisionPrompt');
         $page->adventure_id = $adventure_id;
         $page->save();
 
@@ -77,7 +78,8 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return "View a page (no edit)";
+        $page = \App\Page::with('choices')->where('id', $id)->first();
+        return $page;
     }
 
     /**
@@ -90,13 +92,9 @@ class PageController extends Controller
     {
         $adventure = \App\Adventure::find(session('adventure_id'));
         $page = \App\Page::find($id);
-        $decisions = [];
+        $pages = $adventure->pages()->orderBy('name')->get();
 
-
-        // TODO: what data structure should I use for decisions?
-
-
-        return view('page.edit', compact('adventure', 'page', 'decisions'));
+        return view('page.edit', compact('adventure', 'page', 'pages'));
     }
 
     /**
@@ -112,6 +110,7 @@ class PageController extends Controller
         $page = \App\Page::find($id);
         $page->name = $request->input('pageName');
         $page->page_text = $request->input('pageText');
+        $page->decision_prompt = $request->input('decisionPrompt');
 
         // Change adventure first page
         if ($request->input('isFirstPage')) {
@@ -126,23 +125,27 @@ class PageController extends Controller
 
         }
 
+        // Remove old choices
+        $page->choices()->delete();
+
         // Is this a final page?
         if ($request->input('isTheEnd')) {
             $page->is_the_end = true;
-//            $page->choices()->delete();
         }
         else {
             $page->is_the_end = false;
-        }
 
-        // Save choices
-//        $choices = $request->input('decision.*');
-//        for ($i=0; $i<count($choices); $i++) {
-//            $choice = new \App\Choice;
-//            $choice->page_id = $page->id;
-//            $choice->wording = $choices[$i];
-//            $choice->save();
-//        }
+            // Save new choices
+            $choices = json_decode($request->input('choices'), true);
+            foreach ($choices as $choice) {
+                $new = new \App\Choice;
+                $new->page_id = $page->id;
+                $new->next_page_id = $choice['next_page_id'];
+                $new->wording = $choice['wording'];
+                $new->save();
+            }
+
+        }
 
         // Save page
         $page->save();

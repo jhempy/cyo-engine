@@ -2,9 +2,7 @@
 
 @section('content')
 
-  <p><strong>Adventure:</strong> <a href='/adventures/{{ $adventure->id }}/edit'>{{ $adventure->title }}</a> <a class="small-side-link" href="/adventures">(change)</a></p>
-
-<p class="headline">Edit Page</p>
+<p class="headline">Edit a Page from <em><a href="/adventures/{{ $adventure->id }}/edit">{{ $adventure->title }}</a></em></p>
 
 <form id="edit" v-cloak method="post" action="{{ url('/pages/' . $page->id) }}">
 
@@ -13,19 +11,19 @@
 
   <div class="form-group">
     <label for="pageName">Page Name</label>
-    <input 
-      type="text" 
-      class="form-control" 
-      id="pageName" 
-      name="pageName" 
+    <input
+      type="text"
+      class="form-control"
+      id="pageName"
+      name="pageName"
       value="{{ $page->name }}">
   </div>
   <div class="form-group">
     <label for="pageText">Page Text</label>
-    <textarea 
-      class="form-control" 
-      rows="3" 
-      id="pageText" 
+    <textarea
+      class="form-control"
+      rows="3"
+      id="pageText"
       name="pageText">{{ $page->page_text }}</textarea>
   </div>
 
@@ -51,7 +49,17 @@
     </label>
   </div>
 
-  {{--<decisions></decisions>--}}
+  <div class="form-group">
+    <label for="decisionPrompt">Decision Prompt</label>
+    <input
+      type="text"
+      class="form-control"
+      id="decisionPrompt"
+      name="decisionPrompt"
+      value="{{ $page->decision_prompt }}">
+  </div>
+
+  <choices :choices='{{ $page->choices()->get()->toJson() }}' :pages='{{ $pages->toJson() }}'></choices>
 
   <div class="pull-right">
     <button type="submit" class="btn btn-primary">Update</button>

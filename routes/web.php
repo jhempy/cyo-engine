@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'AdventureController@index')->name('home');
 
 Route::resource('adventures', 'AdventureController');
 
@@ -29,3 +30,5 @@ Route::resource('adventures', 'AdventureController');
 Route::resource('/pages', 'PageController');
 
 Route::resource('/read', 'ReadController');
+
+Route::resource('/map', 'MapController');

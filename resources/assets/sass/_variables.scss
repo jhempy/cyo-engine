@@ -3,6 +3,7 @@ $watermelon: #FF3B3F;
 $carbon: #A9A9A9;
 $sky: #CAEBAF2;
 $neutral: #EFEFEF;
+$red: #FF0000;
 
 // New Palette Colors
 // $lime: #75D701;
@@ -21,7 +22,7 @@ $panel-inner-border: $laravel-border-color;
 
 // Brands
 // $brand-primary: #3097D1;
-$brand-primary: $lime;
+$brand-primary: $red;
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
@@ -29,8 +30,10 @@ $brand-danger: #bf5329;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 14px;
+$font-family-sans-serif: "Open Sans", sans-serif;
+$font-family-serif: 'Gentium Basic', serif;
+$font-family-base: $font-family-serif;
+$font-size-base: 16px;
 $line-height-base: 1.6;
 $text-color: #636b6f;
 

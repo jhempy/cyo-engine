@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -29,7 +33,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <span class="ff-home">{{ config('app.name', 'Laravel') }}</span>
                     </a>
                 </div>
 
@@ -70,7 +74,7 @@
                 </div>
             </div>
         </nav>
-        
+
 @yield('content')
 
     </div>

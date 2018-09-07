@@ -120,6 +120,7 @@ class AdventureController extends Controller
         $adventure->title = $request->input('adventureTitle');
         $adventure->description = $request->input('adventureDescription');
         $adventure->publish_date = $request->input('publishDate');
+        $adventure->is_public = $request->input('isPublic');
         $adventure->save();
         return redirect('/adventures');
     }

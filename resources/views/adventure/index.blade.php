@@ -8,9 +8,8 @@
 
 @section('content')
 
-  <p class="pull-right create-icon"><a href="{{ url('/adventures/create') }}">(Create)</a></p>
-
-  <p class="headline pull-left">My Adventures</p>
+  <p class="headline">My Adventures</p>
+  <p><a href="{{ url('/adventures/create') }}">Create a New Adventure</a></p>
 
   <table class="table">
     <thead>
@@ -28,6 +27,7 @@
         <tr>
           <td>
             <a href="/read/{{ $a->id }}"><i class="option-spacing fa fa-book" aria-hidden="true"></i></a>
+            <a href="/map/{{ $a->id}}"><i class="option-spacing fa fa-map-o" aria-hidden="true"></i></a>
             <a href="/adventures/{{ $a->id }}/edit"><i class="option-spacing fa fa-pencil-square-o" aria-hidden="true"></i></a>
             <a href="#" v-on:click="deleteAdventure({{ $a->id }})"><i class="option-spacing fa fa-trash-o" aria-hidden="true"></i></a>
           </td>
