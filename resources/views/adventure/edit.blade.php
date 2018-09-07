@@ -51,10 +51,10 @@
   </div>
 
   <br />
+  <br />
 
   <hr />
 
-  <h4><strong>Pages</strong></h4>
   <p><a href="/pages/create">Create a New Page</a></p>
   <table class="table">
       <thead>
@@ -93,3 +93,21 @@
 </form>
 
 @endsection
+
+@section('page-js-script')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#adventureDescription').summernote({
+          toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']]
+          ]
+        });
+    });
+</script>
+@stop

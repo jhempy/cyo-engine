@@ -1,8 +1,6 @@
 <template>
     <div id="page">
-        <div id="page-text">
-            {{ contents }}
-        </div>
+        <div id="page-text" v-html="contents"></div>
         <div v-if="the_end">
             <p class="text-center"><em>The end.</em></p>
         </div>

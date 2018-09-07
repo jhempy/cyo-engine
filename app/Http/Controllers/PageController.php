@@ -53,18 +53,11 @@ class PageController extends Controller
         $page = new \App\Page;
         $page->name = $request->input('pageName');
         $page->page_text = $request->input('pageText');
-        $page->decision_prompt = $request->input('decisionPrompt');
+        if ($request->input('decisionPrompt') != '') {
+            $page->decision_prompt = $request->input('decisionPrompt');
+        }
         $page->adventure_id = $adventure_id;
         $page->save();
-
-        // Add the decisions to the page
-        $choices = $request->input('decision.*');
-        for ($i=0; $i<count($choices); $i++) {
-            $choice = new \App\Choice;
-            $choice->page_id = $page->id;
-            $choice->wording = $choices[$i];
-            $choice->save();
-        }
 
         return redirect('/adventures/' . $adventure_id . '/edit');
 
@@ -110,7 +103,9 @@ class PageController extends Controller
         $page = \App\Page::find($id);
         $page->name = $request->input('pageName');
         $page->page_text = $request->input('pageText');
-        $page->decision_prompt = $request->input('decisionPrompt');
+        if ($request->input('decisionPrompt') != '') {
+            $page->decision_prompt = $request->input('decisionPrompt');
+        }
 
         // Change adventure first page
         if ($request->input('isFirstPage')) {

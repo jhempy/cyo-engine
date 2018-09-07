@@ -16,6 +16,9 @@
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/14f1f2c704.js"></script>
 
+    <!-- include summernote css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.css" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -99,6 +102,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <!-- include summernote js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.js"></script>
+
+    <!-- for flowcharts -->
+
+    @yield('page-js-script')
 
 </body>
 </html>

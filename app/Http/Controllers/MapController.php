@@ -46,6 +46,16 @@ class MapController extends Controller
     public function show($id)
     {
         $adventure = \App\Adventure::find($id);
+
+        $nodes = "graph LR\n";
+        foreach ($adventure->pages()->orderBy('id')->get() as $page) {
+            $nodes .= "\tPage" . $page->id . '[' . $page->name . "]\n";
+            foreach ($page->choices()->orderBy('wording')->get() as $choice) {
+                $nodes .= "\tPage" . $page->id . '-->|' . $choice->wording . '|Page' . $choice->next_page_id . "\n";
+            }
+        }
+        $adventure->mermaid = $nodes;
+
         return view('map.show', compact('adventure'));
     }
 
