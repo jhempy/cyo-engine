@@ -43,7 +43,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="navbar-item"><a href="{{ url('/home') }}">My Adventures</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -90,7 +90,7 @@
 
     <!-- for flowcharts -->
     <script src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.js"></script>
-    
+
     @yield('page-js-script')
 
 </body>

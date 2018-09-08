@@ -109,8 +109,8 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $adventure = \App\Adventure::find(session('adventure_id'));
         $page = \App\Page::find($id);
+        $adventure = \App\Adventure::find($page->adventure_id);
         $pages = $adventure->pages()->orderBy('name')->get();
 
         return view('page.edit', compact('adventure', 'page', 'pages'));
