@@ -49,16 +49,6 @@
     </label>
   </div>
 
-  <div class="form-group">
-    <label for="decisionPrompt">Decision Prompt</label>
-    <input
-      type="text"
-      class="form-control"
-      id="decisionPrompt"
-      name="decisionPrompt"
-      value="{{ $page->decision_prompt }}">
-  </div>
-
   <choices :choices='{{ $page->choices()->get()->toJson() }}' :pages='{{ $pages->toJson() }}'></choices>
 
   <div class="pull-right">

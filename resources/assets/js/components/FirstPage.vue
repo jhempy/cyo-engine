@@ -5,7 +5,6 @@
             <p class="text-center"><em>The end.</em></p>
         </div>
         <div v-else>
-            <p><em>{{ prompt }}</em></p>
             <ul id="choices">
                 <li v-for="option in options">
                     <a href="#" v-on:click="choosePage(option.next_page_id)">{{ option.wording }}</a>
@@ -23,7 +22,6 @@
             return {
                 apiRequest: new XMLHttpRequest(),
                 contents: '',
-                prompt: '',
                 options: [],
                 the_end: false
             }
@@ -37,7 +35,6 @@
 
             this.contents = this.page_text;
             this.options = this.choices;
-            this.prompt = this.page_prompt;
 
         },
 

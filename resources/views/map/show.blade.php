@@ -2,9 +2,11 @@
 
 @section('content')
 
-This is a map for {{ $adventure->title }}.
+<div class="text-center">
+    <p>Page map for <em><a href="/adventures/{{ $adventure->id }}/edit">{{ $adventure->title }}</a></em>.</p>
+</div>
 
-<div class="mermaid">
+<div class="mermaid text-center">
 {!! $adventure->mermaid !!}
 </div>
 

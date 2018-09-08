@@ -60,3 +60,18 @@ a:hover {
 #page-text {
     padding: 20px 0;
 }
+
+.mermaid {
+    padding-top: 20px;
+}
+
+// Marked as important because mermaid classes are defined later?
+// I want the CSS definitions here so that I can use sass
+.mapBoxes > rect {
+    fill-opacity: 0.1 !important;
+    rx: 10 !important;
+    ry: 10 !important;
+    fill: $red !important;
+    stroke: $red !important;
+    stroke-width: 2px !important;
+}

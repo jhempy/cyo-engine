@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    
+
   public function adventure() {
     return $this->belongsTo('App\Adventure');
   }

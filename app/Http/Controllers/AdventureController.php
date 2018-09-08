@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Log;
+
 class AdventureController extends Controller
 {
     /**
@@ -137,19 +139,27 @@ class AdventureController extends Controller
 
         // First, wipe out the first_page_id so that the first page can
         // be deleted later.
+        $first_page = \App\Page::find($adventure->first_page_id);
         $adventure->first_page_id = null;
         $adventure->save();
 
-        // Cascading might be complicated here.
-        // I might want to recover choices even though I routinely wipe them
-        // out in the page editor.
-        // TODO: Review later, after I've used the application a while.
+        // Delete choices
+        foreach ($first_page->choices as $choice) {
+            $choice->delete();
+        }
         foreach ($adventure->pages as $page) {
             foreach ($page->choices as $choice) {
                 $choice->delete();
             }
+        }
+
+        // Delete pages
+        $first_page->delete();
+        foreach ($adventure->pages as $page) {
             $page->delete();
         }
+
+        // Delete the adventure
         $adventure->delete();
 
         return redirect('/adventures');

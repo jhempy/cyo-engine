@@ -11,13 +11,14 @@
             <tbody>
                 <tr v-for="choice in choices">
                     <td>{{ choice.wording }}</td>
-                    <td>{{ lookup[choice.next_page_id] }}</td>
+                    <td><a v-on:click="editPage(choice.next_page_id)">{{ lookup[choice.next_page_id] }}</a></td>
                     <td style="vertical-align: middle;"><a v-on:click="removeChoice(choice.id)">Remove</a></td>
                 </tr>
                 <tr>
                     <td><input type="text" class="form-control" v-model=newChoiceText></td>
                     <td>
                         <select class="form-control" v-model=newChoiceDestination>
+                            <option value="NEW">New page</option>
                             <option v-for="page in pages" v-bind:value=page.id>{{ page.name }}</option>
                         </select>
                     </td>
@@ -81,8 +82,11 @@
                 return this.choices.findIndex(function(choice) {
                     return id === choice.id;
                 });
-            }
+            },
 
+            editPage: function(id) {
+                window.location.href = '/pages/' + id + '/edit';
+            }
 
         }
     }

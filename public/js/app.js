@@ -43254,6 +43254,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['choices', 'pages'],
@@ -43306,6 +43307,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.choices.findIndex(function (choice) {
                 return id === choice.id;
             });
+        },
+
+        editPage: function editPage(id) {
+            window.location.href = '/pages/' + id + '/edit';
         }
 
     }
@@ -43330,7 +43335,19 @@ var render = function() {
             return _c("tr", [
               _c("td", [_vm._v(_vm._s(choice.wording))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.lookup[choice.next_page_id]))]),
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.editPage(choice.next_page_id)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.lookup[choice.next_page_id]))]
+                )
+              ]),
               _vm._v(" "),
               _c("td", { staticStyle: { "vertical-align": "middle" } }, [
                 _c(
@@ -43402,11 +43419,18 @@ var render = function() {
                     }
                   }
                 },
-                _vm._l(_vm.pages, function(page) {
-                  return _c("option", { domProps: { value: page.id } }, [
-                    _vm._v(_vm._s(page.name))
-                  ])
-                })
+                [
+                  _c("option", { attrs: { value: "NEW" } }, [
+                    _vm._v("New page")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.pages, function(page) {
+                    return _c("option", { domProps: { value: page.id } }, [
+                      _vm._v(_vm._s(page.name))
+                    ])
+                  })
+                ],
+                2
               )
             ]),
             _vm._v(" "),
@@ -43644,7 +43668,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['choices', 'page_text', 'page_prompt'],
@@ -43653,7 +43676,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             apiRequest: new XMLHttpRequest(),
             contents: '',
-            prompt: '',
             options: [],
             the_end: false
         };
@@ -43666,7 +43688,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.contents = this.page_text;
         this.options = this.choices;
-        this.prompt = this.page_prompt;
     },
 
     methods: {
@@ -43732,8 +43753,6 @@ var render = function() {
     _vm.the_end
       ? _c("div", [_vm._m(0)])
       : _c("div", [
-          _c("p", [_c("em", [_vm._v(_vm._s(_vm.prompt))])]),
-          _vm._v(" "),
           _c(
             "ul",
             { attrs: { id: "choices" } },

@@ -47,9 +47,11 @@ class MapController extends Controller
     {
         $adventure = \App\Adventure::find($id);
 
-        $nodes = "graph LR\n";
+        $nodes = "graph TB\n";
         foreach ($adventure->pages()->orderBy('id')->get() as $page) {
             $nodes .= "\tPage" . $page->id . '[' . $page->name . "]\n";
+            $nodes .= "\tclass Page" . $page->id . " mapBoxes\n";
+            $nodes .= "\tclick Page" . $page->id . ' "/pages/' . $page->id . "/edit\"\n";
             foreach ($page->choices()->orderBy('wording')->get() as $choice) {
                 $nodes .= "\tPage" . $page->id . '-->|' . $choice->wording . '|Page' . $choice->next_page_id . "\n";
             }

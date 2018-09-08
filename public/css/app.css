@@ -8402,3 +8402,16 @@ a:hover {
   padding: 20px 0;
 }
 
+.mermaid {
+  padding-top: 20px;
+}
+
+.mapBoxes > rect {
+  fill-opacity: 0.1 !important;
+  rx: 10 !important;
+  ry: 10 !important;
+  fill: #FF0000 !important;
+  stroke: #FF0000 !important;
+  stroke-width: 2px !important;
+}
+

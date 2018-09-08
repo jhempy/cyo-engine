@@ -20,8 +20,6 @@ class CreatePagesTable extends Migration
             $table->string('name');
             $table->text('page_text');
             $table->boolean('is_the_end')->default(false);
-            $table->string('decision_prompt')->default('What would you like to do?');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
