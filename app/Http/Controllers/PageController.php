@@ -158,6 +158,14 @@ class PageController extends Controller
             foreach ($choices as $choice) {
                 $new = new \App\Choice;
                 $new->page_id = $page->id;
+                if ($choice['next_page_id'] === 'NEW') {
+                    $new_page = new \App\Page;
+                    $new_page->name = 'New Page';
+                    $new_page->page_text = 'It was a dark and stormy night....';
+                    $new_page->adventure_id = $page->adventure_id;
+                    $new_page->save();
+                    $choice['next_page_id'] = $new_page->id;
+                }
                 $new->next_page_id = $choice['next_page_id'];
                 $new->wording = $choice['wording'];
                 $new->save();
