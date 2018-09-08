@@ -68,15 +68,6 @@ class AdventureController extends Controller
         $adventure->first_page_id = $page->id;
         $adventure->save();
 
-        // Add the decisions to the page
-        $choices = $request->input('decision.*');
-        for ($i=0; $i<count($choices); $i++) {
-            $choice = new \App\Choice;
-            $choice->page_id = $page->id;
-            $choice->wording = $choices[$i];
-            $choice->save();
-        }
-
         return redirect('/adventures');
 
     }
