@@ -45,20 +45,40 @@ class MapController extends Controller
      */
     public function show($id)
     {
-        $adventure = \App\Adventure::find($id);
+        $adventure = \App\Adventure::findOrFail($id);
 
-        $nodes = "graph TB\n";
-        foreach ($adventure->pages()->orderBy('id')->get() as $page) {
-            $nodes .= "\tPage" . $page->id . '[' . $page->name . "]\n";
-            $nodes .= "\tclass Page" . $page->id . " mapBoxes\n";
-            $nodes .= "\tclick Page" . $page->id . ' "/pages/' . $page->id . "/edit\"\n";
-            foreach ($page->choices()->orderBy('wording')->get() as $choice) {
-                $nodes .= "\tPage" . $page->id . '-->|' . $choice->wording . '|Page' . $choice->next_page_id . "\n";
+        if ($adventure->user_id == \Auth::user()->id) {
+
+            $nodes = "graph TB\n";
+            foreach ($adventure->pages()->orderBy('id')->get() as $page) {
+                $nodes .= "\tPage" . $page->id . '[' . $page->name . "]\n";
+                $nodes .= "\tclass Page" . $page->id;
+                if ($page->is_the_end) {
+                    $nodes .= " mapEnd\n";
+                }
+                else {
+                    if ($adventure->first_page_id == $page->id) {
+                        $nodes .= " mapStart\n";
+                    }
+                    else {
+                        $nodes .= " mapChoice\n";
+                    }
+                }
+                $nodes .= "\tclick Page" . $page->id . ' "/pages/' . $page->id . "/edit\"\n";
+                foreach ($page->choices()->orderBy('wording')->get() as $choice) {
+                    $nodes .= "\tPage" . $page->id . '-->|' . $choice->wording . '|Page' . $choice->next_page_id . "\n";
+                }
             }
-        }
-        $adventure->mermaid = $nodes;
+            $adventure->mermaid = $nodes;
 
-        return view('map.show', compact('adventure'));
+            return view('map.show', compact('adventure'));
+
+        }
+        else {
+            return view('home');
+        }
+
+
     }
 
     /**

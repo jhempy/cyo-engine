@@ -106,8 +106,6 @@
     <!-- include summernote js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.js"></script>
 
-    <!-- for flowcharts -->
-
     @yield('page-js-script')
 
 </body>

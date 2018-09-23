@@ -15,4 +15,13 @@ class Page extends Model
     return $this->hasMany('App\Choice');
   }
 
+  public function parents() {
+      // TODO:
+      // should return a collection(?) of the pages that have choices that point to this page
+
+      
+
+
+  }
+
 }

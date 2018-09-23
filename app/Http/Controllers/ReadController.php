@@ -14,6 +14,9 @@ class ReadController extends Controller
     public function index()
     {
         $adventures = \App\Adventure::where('publish_date', '!=', null)->get();
+
+        // TODO: show only if public or mine!
+
         return view('read.index', compact('adventures'));
     }
 

@@ -8390,7 +8390,7 @@ a:hover {
   background-color: #FF0000;
   text-transform: uppercase;
   color: #FFF;
-  padding: 5px 13px;
+  padding: 6px 14px 4px 16px;
   border-radius: 20px;
 }
 
@@ -8406,12 +8406,30 @@ a:hover {
   padding-top: 20px;
 }
 
-.mapBoxes > rect {
+.mapChoice > rect {
   fill-opacity: 0.1 !important;
   rx: 10 !important;
   ry: 10 !important;
+  fill: #ffcc00 !important;
+  stroke: #ffcc00 !important;
+  stroke-width: 2px !important;
+}
+
+.mapEnd > rect {
+  fill-opacity: 0.1 !important;
+  rx: 0 !important;
+  ry: 0 !important;
   fill: #FF0000 !important;
   stroke: #FF0000 !important;
+  stroke-width: 2px !important;
+}
+
+.mapStart > rect {
+  fill-opacity: 0.1 !important;
+  rx: 10 !important;
+  ry: 10 !important;
+  fill: #009900 !important;
+  stroke: #009900 !important;
   stroke-width: 2px !important;
 }
 

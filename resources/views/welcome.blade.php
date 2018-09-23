@@ -98,8 +98,12 @@
                     A choose-your-own engine for short stories and petite plots.
                 </div>
 
-                <div id="app">
+                <!-- <div id="app">
                     <read-list :adventures='{!! json_encode($adventures) !!}'></read-list>
+                </div> -->
+
+                <div style="padding-top: 20px;">
+                    <a href="/read">Read an adventure...</a>
                 </div>
 
             </div>

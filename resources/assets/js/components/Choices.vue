@@ -11,7 +11,8 @@
             <tbody>
                 <tr v-for="choice in choices">
                     <td>{{ choice.wording }}</td>
-                    <td><a v-on:click="editPage(choice.next_page_id)">{{ lookup[choice.next_page_id] }}</a></td>
+                    <td v-if="lookup[choice.next_page_id]"><a v-on:click="editPage(choice.next_page_id)">{{ lookup[choice.next_page_id] }}</a></td>
+                    <td v-else>(New Page)</td>
                     <td style="vertical-align: middle;"><a v-on:click="removeChoice(choice.id)">Remove</a></td>
                 </tr>
                 <tr>

@@ -49,7 +49,7 @@ a:hover {
   background-color: $red;
   text-transform: uppercase;
   color: #FFF;
-  padding: 5px 13px;
+  padding: 6px 14px 4px 16px;
   border-radius: 20px;
 }
 
@@ -67,11 +67,29 @@ a:hover {
 
 // Marked as important because mermaid classes are defined later?
 // I want the CSS definitions here so that I can use sass
-.mapBoxes > rect {
+.mapChoice > rect {
     fill-opacity: 0.1 !important;
     rx: 10 !important;
     ry: 10 !important;
+    fill: $yellow !important;
+    stroke: $yellow !important;
+    stroke-width: 2px !important;
+}
+
+.mapEnd > rect {
+    fill-opacity: 0.1 !important;
+    rx: 0 !important;
+    ry: 0 !important;
     fill: $red !important;
     stroke: $red !important;
+    stroke-width: 2px !important;
+}
+
+.mapStart > rect {
+    fill-opacity: 0.1 !important;
+    rx: 10 !important;
+    ry: 10 !important;
+    fill: $green !important;
+    stroke: $green !important;
     stroke-width: 2px !important;
 }

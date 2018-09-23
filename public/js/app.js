@@ -43255,6 +43255,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['choices', 'pages'],
@@ -43335,19 +43336,21 @@ var render = function() {
             return _c("tr", [
               _c("td", [_vm._v(_vm._s(choice.wording))]),
               _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.editPage(choice.next_page_id)
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.lookup[choice.next_page_id]))]
-                )
-              ]),
+              _vm.lookup[choice.next_page_id]
+                ? _c("td", [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.editPage(choice.next_page_id)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.lookup[choice.next_page_id]))]
+                    )
+                  ])
+                : _c("td", [_vm._v("(New Page)")]),
               _vm._v(" "),
               _c("td", { staticStyle: { "vertical-align": "middle" } }, [
                 _c(
@@ -43574,20 +43577,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "ul",
-      { staticClass: "list-unstyled list-indented" },
-      _vm._l(_vm.adventures, function(adventure) {
-        return _c("li", [
-          _c("a", { attrs: { href: _vm.readUrl(adventure.id) } }, [
-            _vm._v(_vm._s(adventure.title))
-          ]),
-          _vm._v(" - " + _vm._s(adventure.description))
-        ])
-      })
-    )
-  ])
+  return _c(
+    "div",
+    _vm._l(_vm.adventures, function(adventure) {
+      return _c("div", [
+        _vm._v(
+          "\n        A card for " +
+            _vm._s(adventure.title) +
+            " goes here.\n    "
+        )
+      ])
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
