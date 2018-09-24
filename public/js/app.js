@@ -43554,6 +43554,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 
@@ -43579,13 +43585,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "row" },
     _vm._l(_vm.adventures, function(adventure) {
-      return _c("div", [
-        _vm._v(
-          "\n        A card for " +
-            _vm._s(adventure.title) +
-            " goes here.\n    "
-        )
+      return _c("div", { staticClass: "col-lg-4 col-sm-6 col-xs-12" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-container" }, [
+            _c("div", { staticClass: "card-title" }, [
+              _c("a", { attrs: { href: adventure.url } }, [
+                _vm._v(_vm._s(adventure.title))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-author" }, [
+              _vm._v("by " + _vm._s(adventure.author_name))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-publishdate" }, [
+              _vm._v("Published on " + _vm._s(adventure.pubdate))
+            ])
+          ])
+        ])
       ])
     })
   )

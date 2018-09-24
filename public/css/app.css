@@ -8433,3 +8433,47 @@ a:hover {
   stroke-width: 2px !important;
 }
 
+.card {
+  /* Add shadows to create the "card" effect */
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  height: 240px;
+  margin-bottom: 20px;
+}
+
+/* On mouse-over, add a deeper shadow */
+
+.card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+
+.card-container {
+  padding: 30px 16px 20px 16px;
+}
+
+.card-title {
+  color: #FF0000;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  height: 100px;
+  overflow: hidden;
+}
+
+.card-author {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.card-publishdate {
+  padding: 10px 0;
+  font-style: italic;
+  text-align: center;
+}
+

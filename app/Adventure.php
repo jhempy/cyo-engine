@@ -9,7 +9,7 @@ class Adventure extends Model
 {
 
   public function first_page() {
-    return $this->hasOne('App\Page', 'first_page_id');
+    return $this->belongsTo('App\Page', 'first_page_id');
   }
 
   public function pages() {
@@ -27,6 +27,16 @@ class Adventure extends Model
     }
     $pretty = $updated->month . '/' . $updated->day . '/' . $updated->year . ' ' . $time;
     return $pretty;
+  }
+
+  public function pretty_published() {
+    $published = Carbon::parse($this->published_at);
+    $pretty = $published->format('F') . ' ' . $published->day . ', ' . $published->year;
+    return $pretty;
+  }
+
+  public function author() {
+      return $this->belongsTo('App\User', 'user_id');
   }
 
 }

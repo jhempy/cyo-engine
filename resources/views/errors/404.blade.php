@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center"><em>The end.</em></h1>
+<h1 class="text-center">The end.</h1>
 
 <p class="text-center" style="padding-top: 40px; padding-bottom: 0px;">
     The page you're looking for doesn't exist,
