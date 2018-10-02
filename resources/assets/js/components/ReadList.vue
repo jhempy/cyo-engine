@@ -9,6 +9,9 @@
                 </div>
             </div>
         </div>
+        <div v-empty>
+            <p class="text-center"><br />There aren't any published adventures...yet.<br /><br /></p>
+        </div>
     </div>
 </template>
 
