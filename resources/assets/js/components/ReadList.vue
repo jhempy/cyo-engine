@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <div v-empty>
+        <div v-if="adventures.length == 0">
             <p class="text-center"><br />There aren't any published adventures...yet.<br /><br /></p>
         </div>
     </div>
