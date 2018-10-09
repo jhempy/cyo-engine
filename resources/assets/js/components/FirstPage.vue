@@ -42,9 +42,10 @@
 
             choosePage: function (id) {
 
-                // Set up url for fetching weather data.
+                // Set up url for fetching page data.
             	let url = "/pages/<pageId>";
             	url = url.replace("<pageId>", id);
+                // console.log(url);
 
             	// Code that fetches data from the API URL and stores it in results.
             	this.apiRequest.onload = this.onPageSuccess;

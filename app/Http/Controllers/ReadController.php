@@ -53,8 +53,25 @@ class ReadController extends Controller
     public function show($id)
     {
         $adventure = \App\Adventure::find($id);
-        $page = \App\Page::find($adventure->first_page_id);
-        return view('adventure.show', compact('adventure', 'page'));
+        $go = false;
+
+        // You can see this adventure if either...
+        // ...you own it, or
+        if ($adventure && !\Auth::guest() && \Auth::user()->id == $adventure->user_id) {
+            $go = true;
+        }
+        // ...it is public and published
+        elseif ($adventure && $adventure->is_public && $adventure->publish_date) {
+            $go = true;
+        }
+
+        if ($go) {
+            $page = \App\Page::find($adventure->first_page_id);
+            return view('adventure.show', compact('adventure', 'page'));
+        }
+        else {
+            return view('errors.nope');
+        }
     }
 
     /**

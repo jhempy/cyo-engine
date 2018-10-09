@@ -43734,9 +43734,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         choosePage: function choosePage(id) {
 
-            // Set up url for fetching weather data.
+            // Set up url for fetching page data.
             var url = "/pages/<pageId>";
             url = url.replace("<pageId>", id);
+            // console.log(url);
 
             // Code that fetches data from the API URL and stores it in results.
             this.apiRequest.onload = this.onPageSuccess;
